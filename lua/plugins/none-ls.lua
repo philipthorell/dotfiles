@@ -12,8 +12,20 @@ return {
 				null_ls.builtins.formatting.black,
 				null_ls.builtins.formatting.isort,
 				null_ls.builtins.formatting.prettier,
-				-- null_ls.builtins.diagnostics.eslint_d,
-				require("none-ls.diagnostics.eslint_d"),
+				require("none-ls.diagnostics.eslint_d").with({
+					extra_args = { "--config", vim.fn.expand("~/.eslintrc.json") },
+					-- Optional: This makes it only run if no local config is found
+					condition = function(utils)
+						return not utils.root_has_file({
+							".eslintrc",
+							".eslintrc.js",
+							".eslintrc.json",
+							".eslintrc.yaml",
+							".eslintrc.yml",
+							"package.json",
+						})
+					end,
+				}),
 			},
 		})
 
