@@ -6,7 +6,10 @@
   "passthrough": false,
   "gtk-layer-shell": true,
   "height": 37,
-  "modules-left": ["custom/wofi", "custom/pacman"],
+  "modules-left": [
+    "custom/wofi",
+    "custom/pacman"
+  ],
   "modules-center": [
     "custom/page1",
     "custom/page2",
@@ -117,9 +120,9 @@
     "tooltip": false,
     "format-muted": " Muted",
     "on-click": "pavucontrol",
-    "on-scroll-up": "pamixer -i 5",
-    "on-scroll-down": "pamixer -d 5",
-    "scroll-step": 100,
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
+    "scroll-step": 1,
     "format-icons": {
       "headphone": "",
       "hands-free": "",
@@ -127,7 +130,11 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": [
+        "",
+        "",
+        ""
+      ]
     }
   },
   "bluetooth": {
