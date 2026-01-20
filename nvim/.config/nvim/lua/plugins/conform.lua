@@ -11,10 +11,10 @@ return {
 				lua = { "stylua" },
 
 				-- JS/TS: Runs eslint_d followed by prettier
-				javascript = { "eslint_d", "prettier" },
-				typescript = { "eslint_d", "prettier" },
-				javascriptreact = { "eslint_d", "prettier" },
-				typescriptreact = { "eslint_d", "prettier" },
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				javascriptreact = { "prettier" },
+				typescriptreact = { "prettier" },
 			},
 
 			-- Optional: Setup format on save
