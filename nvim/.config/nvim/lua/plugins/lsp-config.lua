@@ -38,6 +38,10 @@ return {
 				"pyright",
 				"ts_ls",
 				"tailwindcss",
+				"dockerls",
+				"docker_compose_language_service",
+				"yamlls",
+				"bashls",
 				-- Linters & Formatters
 				-- "eslint_d",
 				-- "prettier",
