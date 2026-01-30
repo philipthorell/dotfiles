@@ -37,9 +37,9 @@ emit() {
 
   if ((${#classes[@]})); then
     printf '{"text":"%s","class":"%s"}\n' \
-            "${icons[$icon_index]}" "$(IFS=' '; echo "${classes[*]}")"
+            "${icons[$icon_index]}" "$(IFS=' '; echo "${classes[*]}")" || exit
   else
-    printf '{"text":"%s"}\n' "${icons[1]}"
+    printf '{"text":"%s"}\n' "${icons[1]}" || exit
   fi
 }
 

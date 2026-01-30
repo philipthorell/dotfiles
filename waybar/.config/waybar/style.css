@@ -96,8 +96,9 @@ tooltip {
 #memory,
 #cpu,
 #disk,
+#custom-wofi,
 #custom-pacman,
-#custom-wofi {
+#custom-spotify {
   background: #1e1e2e;
   opacity: 0.8;
   padding: 0px 10px;
@@ -109,6 +110,10 @@ tooltip {
 
 #custom-pacman {
   color: #ff746c;
+}
+
+#custom-spotify {
+  color: #1DB954
 }
 
 #memory {
