@@ -1,0 +1,139 @@
+* {
+  font-family: "JetBrainsMonoNerdFont";
+  font-weight: bold;
+  font-size: 15px;
+}
+
+window#waybar {
+  background: rgba(21, 18, 27, 0);
+  color: #cdd6f4;
+  margin: 5px 10px 0px;
+}
+
+tooltip {
+  background: #1e1e2e;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #11111b;
+}
+
+#custom-page1,
+#custom-page2,
+#custom-page3,
+#custom-page4,
+#custom-page5,
+#custom-page6,
+#custom-page7,
+#custom-page8,
+#custom-page9,
+#custom-page10 {
+  min-width: 18px;
+  color: #fff;
+  background: #1e1e2e;
+  opacity: 0.8;
+  padding: 0px 4px;
+  margin-top: 10px;
+  border-top: 3px solid #181825;
+  border-bottom: 3px solid #181825;
+}
+
+#custom-page1 {
+  margin-left: 3px;
+  border-radius: 20px 0 0 20px;
+  border-left: 3px solid #181825;
+}
+
+#custom-page10 {
+  margin-right: 3px;
+  border-radius: 0 20px 20px 0;
+  border-right: 3px solid #181825;
+}
+
+#custom-page1.active,
+#custom-page2.active,
+#custom-page3.active,
+#custom-page4.active,
+#custom-page5.active,
+#custom-page6.active,
+#custom-page7.active,
+#custom-page8.active,
+#custom-page9.active,
+#custom-page10.active {
+  color: #89b4fa;
+}
+
+#custom-page1.occupied:not(.active),
+#custom-page2.occupied:not(.active),
+#custom-page3.occupied:not(.active),
+#custom-page4.occupied:not(.active),
+#custom-page5.occupied:not(.active),
+#custom-page6.occupied:not(.active),
+#custom-page7.occupied:not(.active),
+#custom-page8.occupied:not(.active),
+#custom-page9.occupied:not(.active),
+#custom-page10.occupied:not(.active) {
+  color: #00ff99;
+}
+
+#custom-page1.active.occupied,
+#custom-page2.active.occupied,
+#custom-page3.active.occupied,
+#custom-page4.active.occupied,
+#custom-page5.active.occupied,
+#custom-page6.active.occupied,
+#custom-page7.active.occupied,
+#custom-page8.active.occupied,
+#custom-page9.active.occupied,
+#custom-page10.active.occupied {
+  color: #ff0000;
+}
+
+#window,
+#clock,
+#pulseaudio,
+#bluetooth,
+#memory,
+#cpu,
+#disk,
+#custom-wofi,
+#custom-pacman,
+#custom-spotify {
+  background: #1e1e2e;
+  opacity: 0.8;
+  padding: 0px 10px;
+  margin: 10px 3px 0px;
+  border: 3px solid #181825;
+  border-radius: 20px;
+  color: #89b4fa;
+}
+
+#custom-pacman {
+  color: #ff746c;
+}
+
+#custom-spotify {
+  color: #1DB954
+}
+
+#memory {
+  border-right: none;
+  margin-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#cpu {
+  border-right: none;
+  border-left: none;
+  margin-right: 0;
+  margin-left: 0;
+  border-radius: 0;
+}
+
+#disk {
+  border-left: none;
+  margin-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
