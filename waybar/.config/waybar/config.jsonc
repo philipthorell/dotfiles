@@ -12,16 +12,7 @@
     "custom/spotify"
   ],
   "modules-center": [
-    "custom/page1",
-    "custom/page2",
-    "custom/page3",
-    "custom/page4",
-    "custom/page5",
-    "custom/page6",
-    "custom/page7",
-    "custom/page8",
-    "custom/page9",
-    "custom/page10"
+    "hyprland/workspaces"
   ],
   "modules-right": [
     "bluetooth",
@@ -57,55 +48,59 @@
     "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null", // Script in resources/custom_modules folder
     "exec-if": "pgrep spotify"
   },
-  "custom/page1": {
-    "exec": "~/.config/waybar/scripts/page.sh 1",
-    "exec-persistent": true,
-    "return-type": "json"
-  },
-  "custom/page2": {
-    "exec": "~/.config/waybar/scripts/page.sh 2",
-    "exec-persistent": true,
-    "return-type": "json"
-  },
-  "custom/page3": {
-    "exec": "~/.config/waybar/scripts/page.sh 3",
-    "exec-persistent": true,
-    "return-type": "json"
-  },
-  "custom/page4": {
-    "exec": "~/.config/waybar/scripts/page.sh 4",
-    "exec-persistent": true,
-    "return-type": "json"
-  },
-  "custom/page5": {
-    "exec": "~/.config/waybar/scripts/page.sh 5",
-    "exec-persistent": true,
-    "return-type": "json"
-  },
-  "custom/page6": {
-    "exec": "~/.config/waybar/scripts/page.sh 6",
-    "exec-persistent": true,
-    "return-type": "json"
-  },
-  "custom/page7": {
-    "exec": "~/.config/waybar/scripts/page.sh 7",
-    "exec-persistent": true,
-    "return-type": "json"
-  },
-  "custom/page8": {
-    "exec": "~/.config/waybar/scripts/page.sh 8",
-    "exec-persistent": true,
-    "return-type": "json"
-  },
-  "custom/page9": {
-    "exec": "~/.config/waybar/scripts/page.sh 9",
-    "exec-persistent": true,
-    "return-type": "json"
-  },
-  "custom/page10": {
-    "exec": "~/.config/waybar/scripts/page.sh 10",
-    "exec-persistent": true,
-    "return-type": "json"
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "all-outputs": false, // This is the key! It hides workspaces not on the current monitor
+    "sort-by-number": true,
+    "persistent-workspaces": {
+      "DP-3": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "DP-1": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "format-icons": {
+      "1": "1",
+      "11": "1",
+      "2": "2",
+      "12": "2",
+      "3": "3",
+      "13": "3",
+      "4": "4",
+      "14": "4",
+      "5": "5",
+      "15": "5",
+      "6": "6",
+      "16": "6",
+      "7": "7",
+      "17": "7",
+      "8": "8",
+      "18": "8",
+      "9": "9",
+      "19": "9",
+      "10": "10",
+      "20": "10"
+    }
   },
   "memory": {
     "format": "󰘚 {used:0.1f}G",
