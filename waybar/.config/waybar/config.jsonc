@@ -30,8 +30,8 @@
   "custom/pacman": {
     "format": "  {}",
     "interval": 3600,
-    "exec": "cat /tmp/pacman-updates 2> /dev/null || echo '0'",
-    "on-click": "kitty --hold sh -c 'yay -Syu; ~/.config/waybar/scripts/update-check.sh; pkill -RTMIN+8 waybar'",
+    "exec": "(~/.config/waybar/scripts/update-check.sh; cat /tmp/pacman-updates 2> /dev/null) || echo '0'",
+    "on-click": "kitty --hold sh -c 'yay -Syu; pkill -RTMIN+8 waybar; ~/.config/waybar/scripts/update-check.sh'",
     "signal": 8,
     "tooltip-format": "{} updates available"
   },
