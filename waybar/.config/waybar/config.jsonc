@@ -30,10 +30,11 @@
   "custom/pacman": {
     "format": "  {}",
     "interval": 3600,
-    "exec": "(~/.config/waybar/scripts/update-check.sh; cat /tmp/pacman-updates 2> /dev/null) || echo '0'",
+    "exec": "cat /tmp/pacman-updates 2> /dev/null || echo '0'",
     "on-click": "kitty --hold sh -c 'yay -Syu; pkill -RTMIN+8 waybar; ~/.config/waybar/scripts/update-check.sh'",
+    "on-click-right": "~/.config/waybar/scripts/update-check.sh; pkill -RTMIN+8 waybar",
     "signal": 8,
-    "tooltip-format": "{} updates available"
+    "tooltip-format": "{} updates available\n(right-click to refresh)"
   },
   "custom/spotify": {
     "format": "  {text}",
