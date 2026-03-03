@@ -6,7 +6,7 @@ return {
 			opts = {
 				enable_close = true,
 				enable_rename = true,
-				enable_close_on_slash = false, -- Auto close on trailing </
+				enable_close_on_slash = true, -- Auto close on trailing </
 			},
 		})
 	end,
