@@ -111,6 +111,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nv="nvim"
 alias lg="lazygit"
+alias lzd="lazydocker"
 alias ll="ls -laF"
 alias cl="clear"
 
