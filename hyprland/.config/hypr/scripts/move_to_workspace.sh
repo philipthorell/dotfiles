@@ -1,5 +1,6 @@
 #!/bin/bash
-# Get the ID of the focused monitor
+
+# Get the ID of the focused monitor (be sure to have jq installed)
 MONITOR=$(hyprctl activeworkspace -j | jq -r '.monitor')
 
 # If the monitor is the secondary monitor, add 10 to the workspace number
