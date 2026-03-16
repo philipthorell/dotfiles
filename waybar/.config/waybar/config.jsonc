@@ -16,10 +16,12 @@
   ],
   "modules-right": [
     "bluetooth",
+    "network",
     "memory",
     "cpu",
     "disk",
     "pulseaudio",
+    "battery",
     "clock"
   ],
   "custom/wofi": {
@@ -135,9 +137,25 @@
       "40": "10"
     }
   },
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": " {num_connections}",
+    "tooltip-format": "{device_alias}",
+    "tooltip-format-connected": " {device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}"
+  },
+  "network": {
+    "output": "eDP-1",
+    "format-wifi": " ",
+    "format-ethernet": "󰈀 {ifname}",
+    "format-disconnected": "󰖪 ",
+    "tooltip-format": "{essid}",
+    "on-click": "kitty nmtui"
+  },
   "memory": {
-    "format": "󰘚 {used:0.1f}G",
-    "tooltip-format": "{used:0.1f}/{total:0.1f} GB",
+    "format": "󰘚 {percentage}%",
+    "tooltip-format": "{used:0.1f} / {total:0.1f} GB",
     "interval": 10
   },
   "cpu": {
@@ -146,15 +164,11 @@
     "interval": 10
   },
   "disk": {
-    "format": "󰋊 {specific_used:0.1f}G",
+    "format": "󰋊 {percentage_used}%",
     "tooltip-format": "{specific_used:0.1f} / {specific_total:0.1f} GB",
     "interval": 30,
     "path": "/",
     "unit": "GB"
-  },
-  "clock": {
-    "format": " {:%A 󰥔 %H:%M}",
-    "tooltip-format": "<big>{:%d %b %Y}</big>\n\n<tt>{calendar}</tt>"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -178,12 +192,23 @@
       ]
     }
   },
-  "bluetooth": {
-    "format": " {status}",
-    "format-disabled": "", // an empty format will hide the module
-    "format-connected": " {num_connections}",
-    "tooltip-format": "{device_alias}",
-    "tooltip-format-connected": " {device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}"
+  "battery": {
+    "output": "eDP-1",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "clock": {
+    "format": "󰥔 {:%H:%M}",
+    "tooltip-format": "<big>{:%Y %B %d</big>\n %A}\n\n<tt><small>{calendar}</small></tt>"
   }
 }

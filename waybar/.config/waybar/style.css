@@ -23,10 +23,12 @@ tooltip {
 #custom-spotify,
 #workspaces,
 #bluetooth,
+#network,
 #memory,
 #cpu,
 #disk,
 #pulseaudio,
+#battery,
 #clock {
   background: #1e1e2e;
   opacity: 0.8;
