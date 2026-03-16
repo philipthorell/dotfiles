@@ -55,7 +55,7 @@
     "all-outputs": false, // This is the key! It hides workspaces not on the current monitor
     "sort-by-number": true,
     "persistent-workspaces": {
-      "DP-3": [
+      "DP-1": [
         1,
         2,
         3,
@@ -67,7 +67,7 @@
         9,
         10
       ],
-      "DP-1": [
+      "DP-3": [
         11,
         12,
         13,
