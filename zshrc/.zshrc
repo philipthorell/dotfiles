@@ -121,7 +121,10 @@ alias proj="cd ~/Projects"
 # MAY BE NEEDED IF GPG SIGNING IN GIT FAILS
 #export GPG_TTY=$(tty)
 
+# Exclude the integrated GPU from my CPU
 export HIP_VISIBLE_DEVICES=0
+
+export PATH="$HOME/.local/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -140,4 +143,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
