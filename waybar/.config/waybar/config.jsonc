@@ -8,7 +8,9 @@
   "height": 37,
   "modules-left": [
     "custom/wofi",
+    "backlight",
     "custom/pacman",
+    "custom/vpn",
     "custom/spotify"
   ],
   "modules-center": [
@@ -29,6 +31,26 @@
     "on-click": "wofi --show drun",
     "tooltip-format": "Open app menu"
   },
+  "backlight": {
+    "output": "eDP-1",
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tooltip-format": "brightness level",
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "min-length": 6
+  },
   "custom/pacman": {
     "format": "  {}",
     "interval": 3600,
@@ -37,6 +59,15 @@
     "on-click-right": "~/.config/waybar/scripts/update-check.sh; pkill -RTMIN+8 waybar",
     "signal": 8,
     "tooltip-format": "{} updates available\n(right-click to refresh)"
+  },
+  "custom/vpn": {
+    "output": "eDP-1",
+    "format": "{}",
+    "exec": "nmcli -t -f name,device connection show --active | grep -q 'pivpn' && echo '{\"text\": \"VPN 󰄬\", \"tooltip\": \"Connected to: pivpn\", \"class\": \"connected\"}' || echo '{\"text\": \"VPN 󰅖\", \"tooltip\": \"Disconnected\", \"class\": \"disconnected\"}'",
+    "return-type": "json",
+    "interval": 5,
+    "on-click": "nmcli connection up pivpn",
+    "on-click-right": "nmcli connection down pivpn"
   },
   "custom/spotify": {
     "format": "  {text}",
