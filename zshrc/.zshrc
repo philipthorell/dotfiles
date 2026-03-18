@@ -112,6 +112,8 @@ source $ZSH/oh-my-zsh.sh
 alias nv="nvim"
 alias lg="lazygit"
 alias lzd="lazydocker"
+alias conda="micromamba"
+
 alias ll="ls -laF"
 alias cl="clear"
 
