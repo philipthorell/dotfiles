@@ -33,7 +33,6 @@
   },
   "backlight": {
     "output": "eDP-1",
-    "device": "intel_backlight",
     "format": "{icon} {percent}%",
     "format-icons": [
       "",
@@ -56,7 +55,7 @@
     "interval": 3600,
     "exec": "cat /tmp/pacman-updates 2> /dev/null || echo '0'",
     "on-click": "kitty --hold sh -c 'yay -Syu; pkill -RTMIN+8 waybar; ~/.config/waybar/scripts/update-check.sh'",
-    "on-click-right": "~/.config/waybar/scripts/update-check.sh; pkill -RTMIN+8 waybar",
+    "on-click-right": "$HOME/.config/waybar/scripts/update-check.sh; pkill -RTMIN+8 waybar",
     "signal": 8,
     "tooltip-format": "{} updates available\n(right-click to refresh)"
   },
@@ -67,10 +66,13 @@
     "return-type": "json",
     "interval": 5,
     "on-click": "nmcli connection up pivpn",
-    "on-click-right": "nmcli connection down pivpn"
+    "on-click-right": "nmcli connection down pivpn",
+    "exec-if": "hyprctl monitors | grep 'eDP-1'"
   },
   "custom/spotify": {
     "format": "  {text}",
+    "tooltip": true,
+    "tooltip-format": "{text}",
     "escape": true,
     "return-type": "json",
     "max-length": 40,
@@ -79,14 +81,15 @@
     "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
     "on-scroll-up": "playerctl -p spotify volume 0.05+",
     "on-scroll-down": "playerctl -p spotify volume 0.05-",
-    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null", // Script in resources/custom_modules folder
+    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null",
     "exec-if": "pgrep spotify"
   },
   "hyprland/workspaces": {
     "format": "{icon}",
     "on-click": "activate",
-    "all-outputs": false, // This is the key! It hides workspaces not on the current monitor
+    "all-outputs": false,
     "sort-by-number": true,
+    "passthrough": true,
     "persistent-workspaces": {
       "DP-1": [
         1,

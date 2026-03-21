@@ -67,11 +67,12 @@ class PlayerManager:
     def get_players(self) -> List[Player]:
         return self.manager.props.players
 
-    def write_output(self, text, player):
+    def write_output(self, text, full_text, player):
         logger.debug(f"Writing output: {text}")
 
         output = {
             "text": text,
+            "tooltip": full_text,
             "class": "custom-" + player.props.player_name,
             "alt": player.props.player_name,
         }
@@ -121,17 +122,32 @@ class PlayerManager:
         artist = player.get_artist()
         title = player.get_title()
 
+        all_artists = ""
         track_info = ""
+        full_track_info = ""
+
+        artists_list = metadata.unpack().get("xesam:artist", [])
+
+        # 2. Join them into a single string (e.g., "Artist A, Artist B")
+        if isinstance(artists_list, list):
+            all_artists = ", ".join(artists_list)
+        elif artist:
+            # Fallback to the helper if the metadata dict is weird
+            all_artists = artist
+
         if (
             player_name == "spotify"
             and "mpris:trackid" in metadata.keys()
             and ":ad:" in player.props.metadata["mpris:trackid"]
         ):
             track_info = "Advertisement"
+            full_track_info = "Advertisement"
         elif artist is not None and title is not None:
             track_info = f"{artist} - {title}"
+            full_track_info = f"{all_artists} - {title}"
         else:
             track_info = title
+            full_track_info = title
 
         if track_info:
             if player.props.status == "Paused":
@@ -142,7 +158,7 @@ class PlayerManager:
             current_playing is None
             or current_playing.props.player_name == player.props.player_name
         ):
-            self.write_output(track_info, player)
+            self.write_output(track_info, full_track_info, player)
         else:
             logger.debug(
                 f"Other player {current_playing.props.player_name} is playing, skipping"
