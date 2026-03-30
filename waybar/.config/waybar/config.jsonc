@@ -62,11 +62,11 @@
   "custom/vpn": {
     "output": "eDP-1",
     "format": "{}",
-    "exec": "nmcli -t -f name,device connection show --active | grep -q pivpn && echo '{\"text\": \"VPN 󰄬\", \"tooltip\": \"Connected to: pivpn\", \"class\": \"connected\"}' || echo '{\"text\": \"VPN 󰅖\", \"tooltip\": \"Disconnected\", \"class\": \"disconnected\"}'",
+    "exec": "nmcli -t -f name,device connection show --active | grep -q homelab-vpn && echo '{\"text\": \"VPN 󰄬\", \"tooltip\": \"Connected to: homelab-vpn\", \"class\": \"connected\"}' || echo '{\"text\": \"VPN 󰅖\", \"tooltip\": \"Disconnected\", \"class\": \"disconnected\"}'",
     "return-type": "json",
     "interval": 5,
-    "on-click": "nmcli connection up pivpn",
-    "on-click-right": "nmcli connection down pivpn",
+    "on-click": "nmcli connection up homelab-vpn",
+    "on-click-right": "nmcli connection down homelab-vpn",
     "exec-if": "hyprctl monitors | grep -q 'eDP-1'"
   },
   "custom/spotify": {
