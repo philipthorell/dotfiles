@@ -114,7 +114,9 @@ alias lg="lazygit"
 alias lzd="lazydocker"
 alias conda="micromamba"
 
-alias ll="ls -laF"
+alias ls="eza --icons auto"
+alias ll="eza -la --icons auto"
+alias cat="bat"
 alias cl="clear"
 
 alias nvcf="cd ~/.config/nvim"
