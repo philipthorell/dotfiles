@@ -190,17 +190,17 @@
   "memory": {
     "format": "󰘚 {percentage}%",
     "tooltip-format": "{used:0.1f} / {total:0.1f} GB",
-    "interval": 10
+    "interval": 1
   },
   "cpu": {
     "format": " {usage}%",
     "tooltip-format": "{usage}% @ {avg_frequency}GHz",
-    "interval": 10
+    "interval": 1
   },
   "disk": {
     "format": "󰋊 {percentage_used}%",
     "tooltip-format": "{specific_used:0.1f} / {specific_total:0.1f} GB",
-    "interval": 30,
+    "interval": 1,
     "path": "/",
     "unit": "GB"
   },
