@@ -115,7 +115,7 @@ alias lzd="lazydocker"
 alias conda="micromamba"
 
 alias ls="eza --icons auto"
-alias ll="eza -la --icons auto"
+alias ll="eza -lha --icons auto"
 alias cat="bat"
 alias cl="clear"
 
