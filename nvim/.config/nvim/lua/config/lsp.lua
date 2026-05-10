@@ -36,6 +36,12 @@ end, { desc = "Format file or range (Conform)" })
 
 local severity = vim.diagnostic.severity
 vim.diagnostic.config({
+	virtual_text = true,
+	underline = true,
+	float = {
+		border = "rounded",
+		focusable = true,
+	},
 	signs = {
 		text = {
 			[severity.ERROR] = " ",

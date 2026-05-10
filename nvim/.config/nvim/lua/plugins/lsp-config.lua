@@ -13,13 +13,6 @@ return {
 					package_uninstalled = "✗",
 				},
 			},
-			servers = {
-				ts_ls = {
-					on_attach = function(client, bufnr)
-						require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
-					end,
-				},
-			},
 		},
 	},
 	{
@@ -30,7 +23,6 @@ return {
 		},
 		opts = {
 			ensure_installed = {
-				-- LSPs
 				"cssls",
 				"html",
 				"jsonls",
@@ -42,13 +34,7 @@ return {
 				"docker_compose_language_service",
 				"yamlls",
 				"bashls",
-				-- Linters & Formatters
-				-- "eslint_d",
-				-- "prettier",
-				-- "ruff",
-				-- "stylua",
 			},
-			automatic_installation = true,
 		},
 	},
 }

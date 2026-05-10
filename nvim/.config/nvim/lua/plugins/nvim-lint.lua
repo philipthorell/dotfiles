@@ -17,10 +17,10 @@ return {
 			local root_config = root .. "/eslint.config.js"
 			local frontend_config = root .. "/frontend/eslint.config.js"
 
-			if vim.loop.fs_stat(root_config) then
+			if vim.uv.fs_stat(root_config) then
 				return root_config
 			end
-			if vim.loop.fs_stat(frontend_config) then
+			if vim.uv.fs_stat(frontend_config) then
 				return frontend_config
 			end
 			return nil
