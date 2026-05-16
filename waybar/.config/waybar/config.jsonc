@@ -62,11 +62,11 @@
   "custom/vpn": {
     "output": "eDP-1",
     "format": "{}",
-    "exec": "nmcli -t -f name,device connection show --active | grep -q homelab-vpn && echo '{\"text\": \"VPN 󰄬\", \"tooltip\": \"Connected to: homelab-vpn\", \"class\": \"connected\"}' || echo '{\"text\": \"VPN 󰅖\", \"tooltip\": \"Disconnected\", \"class\": \"disconnected\"}'",
+    "exec": "tailscale status --json | python3 -c \"import sys,json; d=json.load(sys.stdin); print('{\\\"text\\\": \\\"VPN 󰄬\\\", \\\"tooltip\\\": \\\"Connected to Tailscale\\\", \\\"class\\\": \\\"connected\\\"}' if d.get('BackendState') == 'Running' else '{\\\"text\\\": \\\"VPN 󰅖\\\", \\\"tooltip\\\": \\\"Disconnected\\\", \\\"class\\\": \\\"disconnected\\\"}')\"",
     "return-type": "json",
     "interval": 5,
-    "on-click": "nmcli connection up homelab-vpn",
-    "on-click-right": "nmcli connection down homelab-vpn",
+    "on-click": "sudo tailscale up",
+    "on-click-right": "sudo tailscale down",
     "exec-if": "hyprctl monitors | grep -q 'eDP-1'"
   },
   "custom/spotify": {
