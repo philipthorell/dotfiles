@@ -130,6 +130,9 @@ export HIP_VISIBLE_DEVICES=0
 
 export PATH="$HOME/.local/bin:$PATH"
 
+export EDITOR=vim
+export VISUAL=vim
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
