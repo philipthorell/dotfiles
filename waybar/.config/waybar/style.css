@@ -37,7 +37,7 @@ tooltip {
 #backlight,
 #custom-pacman,
 #custom-vpn,
-#custom-spotify,
+#media,
 #workspaces,
 #bluetooth,
 #network,
@@ -59,7 +59,7 @@ tooltip {
   color: @red-1;
 }
 
-#custom-spotify {
+#media {
   color: @green-1;
 }
 
@@ -110,6 +110,7 @@ tooltip {
   background-color: @red-pastel;
 }
 
+/* GROUP SPACING */
 #memory,
 #cpu {
   margin-right: 10px;
