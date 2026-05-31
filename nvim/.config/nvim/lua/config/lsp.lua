@@ -22,7 +22,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap.set("n", "K", function()
 			vim.lsp.buf.hover({ border = "rounded" })
 		end, opts)
-		keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
 	end,
 })
 
