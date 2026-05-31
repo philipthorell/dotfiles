@@ -1,21 +1,36 @@
+@define-color dark-9 #1e1e2e;
+@define-color dark-8 #11111b;
+@define-color dark-7 rgba(21, 18, 27, 0);
+@define-color white-1 #cdd6f4;
+@define-color red-1 #ff746c;
+@define-color green-1 #1DB954;
+@define-color red-pastel #f38ba8;
+@define-color green-pastel #baed91;
+@define-color blue-pastel #89b4fa;
+
+
 * {
-  font-family: "JetBrainsMonoNerdFont";
+  font-family: JetBrainsMono Nerd Font Propo;
   font-weight: bold;
   font-size: 15px;
 }
 
+window.eDP-1 * {
+  font-size: 13px;
+}
+
 window#waybar {
-  background: rgba(21, 18, 27, 0);
-  color: #cdd6f4;
+  background: @dark-7;
+  color: @white-1;
   margin: 5px 10px 0px;
 }
 
 tooltip {
-  background: #1e1e2e;
+  background: @dark-9;
   border-radius: 10px;
   border-width: 2px;
   border-style: solid;
-  border-color: #11111b;
+  border-color: @dark-8;
 }
 
 #custom-wofi,
@@ -26,31 +41,30 @@ tooltip {
 #workspaces,
 #bluetooth,
 #network,
-#memory,
-#cpu,
-#disk,
+#metrics,
 #pulseaudio,
 #battery,
-#clock {
+#clock,
+#system {
   background: #1e1e2e;
   opacity: 0.8;
   padding: 0px 10px;
   margin: 10px 3px 0px;
   border: 3px solid #181825;
   border-radius: 20px;
-  color: #89b4fa;
+  color: @blue-pastel;
 }
 
 #custom-pacman {
-  color: #ff746c;
+  color: @red-1;
 }
 
 #custom-spotify {
-  color: #1DB954
+  color: @green-1;
 }
 
 #workspaces button {
-  color: #cdd6f4;
+  color: @white-1;
   padding: 0 5px;
   margin: 3px 3px;
   padding: 0 4px;
@@ -67,7 +81,7 @@ tooltip {
 }
 
 #workspaces button.empty {
-  color: #cdd6f4;
+  color: @white-1;
   background-color: #323b4a;
 }
 
@@ -81,39 +95,41 @@ tooltip {
   /* Disable predefined animations */
   transition: none;
   color: #323b4a;
-  background-color: #baed91;
+  background-color: @green-pastel;
 }
 
 #workspaces button.active,
 #workspaces button.visible {
   color: #323b4a;
-  background-color: #89b4fa;
+  background-color: @blue-pastel;
 }
 
 /* URGENT (like a notification or a window demanding attention) */
 #workspaces button.urgent {
   color: #323b4a;
-  background-color: #f38ba8;
+  background-color: @red-pastel;
 }
 
-#memory {
-  border-right: none;
-  margin-right: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
+#memory,
 #cpu {
-  border-right: none;
-  border-left: none;
-  margin-right: 0;
-  margin-left: 0;
-  border-radius: 0;
+  margin-right: 10px;
 }
 
-#disk {
-  border-left: none;
-  margin-left: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+#battery.charging {
+  color: @green-pastel;
+}
+
+@keyframes blink {
+  to {
+    color: @blue-pastel;
+  }
+}
+
+#battery.warning:not(.charging) {
+  color: @red-pastel;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }

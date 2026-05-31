@@ -19,12 +19,11 @@
   "modules-right": [
     "bluetooth",
     "network",
-    "memory",
-    "cpu",
-    "disk",
+    "group/metrics",
     "pulseaudio",
     "battery",
-    "clock"
+    "clock",
+    "group/system"
   ],
   "custom/wofi": {
     "format": "󰣇 ",
@@ -172,7 +171,7 @@
     }
   },
   "bluetooth": {
-    "format": " {status}",
+    "format": "",
     "format-disabled": "", // an empty format will hide the module
     "format-connected": " {num_connections}",
     "tooltip-format": "{device_alias}",
@@ -232,17 +231,85 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "format": "{capacity}% {icon} ",
+    "format-icons": {
+      "default": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      "charging": [
+        "󰢟",
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ]
+    }
   },
   "clock": {
     "format": "󰥔 {:%H:%M}",
-    "tooltip-format": "<big>{:%Y %B %d</big>\n %A}\n\n<tt><small>{calendar}</small></tt>"
+    "tooltip-format": "<big>{:%Y %B %d</big>\n %A}\n\n<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "iso8601": true,
+      "mode-mon-col": 3,
+      "weeks-pos": "left",
+      "format": {
+        "today": "<span color='orange'><b>{}</b></span>",
+        "weeks": "<span color='grey'>W{:%W}</span>"
+      }
+    }
+  },
+  "group/metrics": {
+    "orientation": "horizontal",
+    "modules": [
+      "memory",
+      "cpu",
+      "disk"
+    ]
+  },
+  "group/system": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/power", // First element is the "group leader" and won't ever be hidden
+      "custom/quit",
+      "custom/lock",
+      "custom/reboot"
+    ]
+  },
+  "custom/lock": {
+    "format": "󰍁",
+    "tooltip": false,
+    "on-click": "hyprlock"
+  },
+  "custom/reboot": {
+    "format": "󰜉",
+    "tooltip": false,
+    "on-click": "reboot"
+  },
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "shutdown now"
   }
 }
