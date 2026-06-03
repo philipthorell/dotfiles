@@ -1,0 +1,30 @@
+{
+  "memory": {
+    "format": "󰘚 {percentage}%",
+    "tooltip-format": "{used:0.1f} GB / {total:0.1f} GB",
+    "interval": 1,
+    "on-click": "kitty --title=btop -e btop"
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip-format": "{usage}% @ {avg_frequency}GHz",
+    "interval": 1,
+    "on-click": "kitty --title=btop -e btop"
+  },
+  "disk": {
+    "format": "󰋊 {percentage_used}%",
+    "tooltip-format": "{specific_used:0.1f} GB / {specific_total:0.1f} GB",
+    "interval": 1,
+    "path": "/",
+    "unit": "GB",
+    "on-click": "qdirstat"
+  },
+  "group/metrics": {
+    "orientation": "horizontal",
+    "modules": [
+      "memory",
+      "cpu",
+      "disk"
+    ]
+  }
+}

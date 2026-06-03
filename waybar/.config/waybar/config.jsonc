@@ -5,13 +5,27 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "height": 37,
+  "include": [
+    "./modules/wofi.jsonc",
+    "./modules/backlight.jsonc",
+    "./modules/pacman.jsonc",
+    "./modules/vpn.jsonc",
+    "./modules/spotify.jsonc",
+    "./modules/workspaces.jsonc",
+    "./modules/bluetooth.jsonc",
+    "./modules/network.jsonc",
+    "./modules/metrics.jsonc",
+    "./modules/pulseaudio.jsonc",
+    "./modules/battery.jsonc",
+    "./modules/clock.jsonc",
+    "./modules/system.jsonc"
+  ],
   "modules-left": [
     "custom/wofi",
     "backlight",
     "custom/pacman",
     "custom/vpn",
-    "group/media"
+    "group/spotify-group"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -23,307 +37,6 @@
     "pulseaudio",
     "battery",
     "clock",
-    "group/system"
-  ],
-  "custom/wofi": {
-    "format": "󰣇 ",
-    "on-click": "wofi --show drun",
-    "tooltip-format": "Open app menu"
-  },
-  "backlight": {
-    "output": "eDP-1",
-    "format": "{icon} {percent}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
-    "tooltip-format": "brightness level",
-    "on-scroll-up": "brightnessctl set 1%+",
-    "on-scroll-down": "brightnessctl set 1%-",
-    "min-length": 6
-  },
-  "custom/pacman": {
-    "format": "  {}",
-    "interval": 60,
-    "exec": "cat /tmp/pacman-updates 2> /dev/null || echo '0'",
-    "on-click": "kitty --hold sh -c 'yay -Syu; pkill -RTMIN+8 waybar; ~/.config/waybar/scripts/update-check.sh'",
-    "on-click-right": "$HOME/.config/waybar/scripts/update-check.sh; pkill -RTMIN+8 waybar",
-    "signal": 8,
-    "tooltip-format": "{} updates available\n(right-click to refresh)"
-  },
-  "custom/vpn": {
-    "output": "eDP-1",
-    "format": "{}",
-    "exec": "tailscale status --json | python3 -c \"import sys,json; d=json.load(sys.stdin); print('{\\\"text\\\": \\\"VPN 󰄬\\\", \\\"tooltip\\\": \\\"Connected to Tailscale\\\", \\\"class\\\": \\\"connected\\\"}' if d.get('BackendState') == 'Running' else '{\\\"text\\\": \\\"VPN 󰅖\\\", \\\"tooltip\\\": \\\"Disconnected\\\", \\\"class\\\": \\\"disconnected\\\"}')\"",
-    "return-type": "json",
-    "interval": 5,
-    "on-click": "sudo tailscale up",
-    "on-click-right": "sudo tailscale down",
-    "exec-if": "hyprctl monitors | grep -q 'eDP-1'"
-  },
-  "custom/spotify": {
-    "format": "  {text}",
-    "escape": true,
-    "on-click": "playerctl -p spotify play-pause",
-    "on-click-right": "playerctl -p spotify next",
-    "on-click-middle": "playerctl -p spotify previous",
-    "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
-    "on-scroll-up": "playerctl -p spotify volume 0.05+",
-    "on-scroll-down": "playerctl -p spotify volume 0.05-",
-    "exec": "~/.config/waybar/scripts/media/mediaplayer.sh",
-    "exec-if": "pgrep spotify"
-  },
-  "custom/spotify-time": {
-    "exec": "~/.config/waybar/scripts/media/media-time.sh",
-    "escape": true,
-    "tooltip": false,
-    "interval": 1
-  },
-  "group/media": {
-    "orientation": "horizontal",
-    "modules": [
-      "custom/spotify",
-      "custom/spotify-time"
-    ]
-  },
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "on-click": "activate",
-    "all-outputs": false,
-    "sort-by-number": true,
-    "passthrough": true,
-    "persistent-workspaces": {
-      "DP-1": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "DP-3": [
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20
-      ],
-      "eDP-1": [
-        21,
-        22,
-        23,
-        24,
-        25,
-        26,
-        27,
-        28,
-        29,
-        30
-      ]
-    },
-    "format-icons": {
-      "1": "1",
-      "11": "1",
-      "21": "1",
-      "31": "1",
-      "2": "2",
-      "12": "2",
-      "22": "2",
-      "32": "2",
-      "3": "3",
-      "13": "3",
-      "23": "3",
-      "33": "3",
-      "4": "4",
-      "14": "4",
-      "24": "4",
-      "34": "4",
-      "5": "5",
-      "15": "5",
-      "25": "5",
-      "35": "5",
-      "6": "6",
-      "16": "6",
-      "26": "6",
-      "36": "6",
-      "7": "7",
-      "17": "7",
-      "27": "7",
-      "37": "7",
-      "8": "8",
-      "18": "8",
-      "28": "8",
-      "38": "8",
-      "9": "9",
-      "19": "9",
-      "29": "9",
-      "39": "9",
-      "10": "10",
-      "20": "10",
-      "30": "10",
-      "40": "10"
-    }
-  },
-  "bluetooth": {
-    "format": "",
-    "format-disabled": "", // an empty format will hide the module
-    "format-connected": " {num_connections}",
-    "tooltip-format": "{device_alias}",
-    "tooltip-format-connected": " {device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}",
-    "on-click": "kitty --title=bluetui -e bluetui"
-  },
-  "network": {
-    "output": "eDP-1",
-    "format-wifi": " ",
-    "format-ethernet": "󰈀 ",
-    "format-disconnected": "󰖪 ",
-    "tooltip-format": "{essid}",
-    "on-click": "kitty --title=nmtui nmtui"
-  },
-  "memory": {
-    "format": "󰘚 {percentage}%",
-    "tooltip-format": "{used:0.1f} / {total:0.1f} GB",
-    "interval": 1,
-    "on-click": "kitty --title=btop -e btop"
-  },
-  "cpu": {
-    "format": " {usage}%",
-    "tooltip-format": "{usage}% @ {avg_frequency}GHz",
-    "interval": 1,
-    "on-click": "kitty --title=btop -e btop"
-  },
-  "disk": {
-    "format": "󰋊 {percentage_used}%",
-    "tooltip-format": "{specific_used:0.1f} / {specific_total:0.1f} GB",
-    "interval": 1,
-    "path": "/",
-    "unit": "GB",
-    "on-click": "qdirstat"
-  },
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "tooltip": false,
-    "format-muted": " Muted",
-    "on-click": "pavucontrol",
-    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-",
-    "scroll-step": 1,
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
-    }
-  },
-  "battery": {
-    "output": "eDP-1",
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{capacity}% {icon} ",
-    "format-icons": {
-      "default": [
-        "󰂎",
-        "󰁺",
-        "󰁻",
-        "󰁼",
-        "󰁽",
-        "󰁾",
-        "󰁿",
-        "󰂀",
-        "󰂁",
-        "󰂂",
-        "󰁹"
-      ],
-      "charging": [
-        "󰢟",
-        "󰢜",
-        "󰂆",
-        "󰂇",
-        "󰂈",
-        "󰢝",
-        "󰂉",
-        "󰢞",
-        "󰂊",
-        "󰂋",
-        "󰂅"
-      ]
-    }
-  },
-  "clock": {
-    "format": "󰥔 {:%H:%M}",
-    "tooltip-format": "<big>{:%Y %B %d</big>\n %A}\n\n<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "mode": "year",
-      "iso8601": true,
-      "mode-mon-col": 3,
-      "weeks-pos": "left",
-      "format": {
-        "today": "<span color='orange'><b>{}</b></span>",
-        "weeks": "<span color='grey'>W{:%W}</span>"
-      }
-    }
-  },
-  "group/metrics": {
-    "orientation": "horizontal",
-    "modules": [
-      "memory",
-      "cpu",
-      "disk"
-    ]
-  },
-  "group/system": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 500,
-      "children-class": "not-power",
-      "transition-left-to-right": false
-    },
-    "modules": [
-      "custom/power", // First element is the "group leader" and won't ever be hidden
-      "custom/quit",
-      "custom/lock",
-      "custom/reboot"
-    ]
-  },
-  "custom/lock": {
-    "format": "󰍁",
-    "tooltip": false,
-    "on-click": "hyprlock"
-  },
-  "custom/reboot": {
-    "format": "󰜉",
-    "tooltip": false,
-    "on-click": "reboot"
-  },
-  "custom/power": {
-    "format": "",
-    "tooltip": false,
-    "on-click": "shutdown now"
-  }
+    "group/system-group"
+  ]
 }

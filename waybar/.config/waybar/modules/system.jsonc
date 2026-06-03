@@ -1,0 +1,29 @@
+{
+  "custom/lock": {
+    "format": "󰍁 ",
+    "tooltip": false,
+    "on-click": "hyprlock"
+  },
+  "custom/reboot": {
+    "format": "󰜉 ",
+    "tooltip": false,
+    "on-click": "reboot"
+  },
+  "custom/power": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "shutdown now"
+  },
+  "group/system-group": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/power", // First element is the "group leader" and won't ever be hidden
+      "custom/lock",
+      "custom/reboot"
+    ]
+  }
+}

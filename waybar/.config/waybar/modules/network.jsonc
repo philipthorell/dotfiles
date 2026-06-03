@@ -1,0 +1,10 @@
+{
+  "network": {
+    "output": "eDP-1",
+    "format-wifi": " ",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰖪 ",
+    "tooltip-format": "{essid}",
+    "on-click": "kitty --title=nmtui nmtui"
+  }
+}

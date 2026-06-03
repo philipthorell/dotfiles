@@ -1,0 +1,5 @@
+@import "../colors.css";
+
+#custom-pacman {
+  color: @pacman-color;
+}

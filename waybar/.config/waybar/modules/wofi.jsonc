@@ -1,0 +1,7 @@
+{
+  "custom/wofi": {
+    "format": "󰣇 ",
+    "on-click": "wofi --show drun",
+    "tooltip-format": "Open app menu"
+  }
+}

@@ -1,16 +1,19 @@
-@define-color dark-9 #1e1e2e;
-@define-color dark-8 #11111b;
-@define-color dark-7 rgba(21, 18, 27, 0);
-@define-color white-1 #cdd6f4;
-@define-color red-1 #ff746c;
-@define-color green-1 #1DB954;
-@define-color red-pastel #f38ba8;
-@define-color green-pastel #baed91;
-@define-color blue-pastel #89b4fa;
-
+@import "styling/colors.css";
+@import "styling/base.css";
+@import "styling/modules/workspaces.css";
+@import "styling/modules/metrics.css";
+@import "styling/modules/pacman.css";
+@import "styling/modules/spotify.css";
+@import "styling/modules/system.css";
+@import "styling/modules/battery.css";
 
 * {
-  font-family: JetBrainsMono Nerd Font Propo;
+  margin: 0;
+  padding: 0;
+  /*min-height: 0px;*/
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
   font-size: 15px;
 }
@@ -20,117 +23,15 @@ window.eDP-1 * {
 }
 
 window#waybar {
-  background: @dark-7;
+  background: transparent;
   color: @white-1;
   margin: 5px 10px 0px;
 }
 
 tooltip {
-  background: @dark-9;
+  background: @background-color;
   border-radius: 10px;
   border-width: 2px;
   border-style: solid;
-  border-color: @dark-8;
-}
-
-#custom-wofi,
-#backlight,
-#custom-pacman,
-#custom-vpn,
-#media,
-#workspaces,
-#bluetooth,
-#network,
-#metrics,
-#pulseaudio,
-#battery,
-#clock,
-#system {
-  background: #1e1e2e;
-  opacity: 0.8;
-  padding: 0px 10px;
-  margin: 10px 3px 0px;
-  border: 3px solid #181825;
-  border-radius: 20px;
-  color: @blue-pastel;
-}
-
-#custom-pacman {
-  color: @red-1;
-}
-
-#media {
-  color: @green-1;
-}
-
-#workspaces button {
-  color: @white-1;
-  padding: 0 5px;
-  margin: 3px 3px;
-  padding: 0 4px;
-  background-color: #323b4a;
-  border: none;
-  border-radius: 50%;
-  transition: all 0.3s ease-in;
-}
-
-/* This shows which workspaces have stuff in them (even if not active) */
-#workspaces button.persistent {
-  color: #323b4a;
-  background-color: #a6adc8;
-}
-
-#workspaces button.empty {
-  color: @white-1;
-  background-color: #323b4a;
-}
-
-#workspaces button:hover {
-  /* Remove predefined box-shadow */
-  box-shadow: none;
-  /* Remove predefined text-shadow */
-  text-shadow: none;
-  /* Remove predefined background color (white) */
-  background: none;
-  /* Disable predefined animations */
-  transition: none;
-  color: #323b4a;
-  background-color: @green-pastel;
-}
-
-#workspaces button.active,
-#workspaces button.visible {
-  color: #323b4a;
-  background-color: @blue-pastel;
-}
-
-/* URGENT (like a notification or a window demanding attention) */
-#workspaces button.urgent {
-  color: #323b4a;
-  background-color: @red-pastel;
-}
-
-/* GROUP SPACING */
-#memory,
-#cpu {
-  margin-right: 10px;
-}
-
-#battery.charging {
-  color: @green-pastel;
-}
-
-@keyframes blink {
-  to {
-    color: @blue-pastel;
-  }
-}
-
-#battery.warning:not(.charging) {
-  color: @red-pastel;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  border-color: @border-color;
 }

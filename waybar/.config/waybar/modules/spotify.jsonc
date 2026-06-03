@@ -1,0 +1,29 @@
+{
+  "custom/spotify": {
+    "format": "  {text}",
+    "escape": true,
+    "tooltip": false,
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "playerctl -p spotify next",
+    "on-click-middle": "playerctl -p spotify previous",
+    "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+    "on-scroll-up": "playerctl -p spotify volume 0.05+",
+    "on-scroll-down": "playerctl -p spotify volume 0.05-",
+    "exec": "~/.config/waybar/scripts/media/mediaplayer.sh",
+    "exec-if": "pgrep spotify"
+  },
+  "custom/spotify-time": {
+    "exec": "~/.config/waybar/scripts/media/media-time.sh",
+    "exec-if": "pgrep spotify",
+    "escape": true,
+    "tooltip": false,
+    "interval": 1
+  },
+  "group/spotify-group": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/spotify",
+      "custom/spotify-time"
+    ]
+  }
+}

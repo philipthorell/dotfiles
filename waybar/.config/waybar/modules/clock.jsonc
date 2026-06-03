@@ -1,0 +1,16 @@
+{
+  "clock": {
+    "format": "󰥔 {:%H:%M}",
+    "tooltip-format": "<big>{:%Y %B %d</big>\n %A}\n\n<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "iso8601": true,
+      "mode-mon-col": 3,
+      "weeks-pos": "left",
+      "format": {
+        "today": "<span color='orange'><b>{}</b></span>",
+        "weeks": "<span color='#89b4fa'>W{:%W}</span>"
+      }
+    }
+  }
+}
