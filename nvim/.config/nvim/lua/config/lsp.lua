@@ -1,5 +1,13 @@
 local keymap = vim.keymap -- for conciseness
 
+vim.lsp.config("cssls", {
+	settings = {
+		css = { validate = false },
+		scss = { validate = false },
+		less = { validate = false },
+	},
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)

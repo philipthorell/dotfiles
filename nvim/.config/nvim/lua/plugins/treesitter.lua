@@ -15,9 +15,10 @@ return {
 
 		local ensure_installed = {
 			"lua",
-			"javascript",
-			"html",
 			"python",
+			"html",
+			"css",
+			"javascript",
 			"tsx",
 			"markdown",
 			"json",
