@@ -1,13 +1,35 @@
-@define-color background-color #1e1e2e;
-@define-color border-color #181825;
-
-@define-color pacman-color #ff746c;
-@define-color spotify-color #1DB954;
+@define-color red #ff746c;
+@define-color green #1DB954;
+@define-color white #cdd6f4;
+@define-color grey #a6adc8;
+@define-color dark-grey #323b4a;
+@define-color dark-blue #1e1e2e;
+@define-color darker-blue #181825;
 
 @define-color red-pastel #f38ba8;
 @define-color green-pastel #baed91;
 @define-color blue-pastel #89b4fa;
 
-@define-color workspace-button-white #cdd6f4;
-@define-color workspace-button-grey #323b4a;
-@define-color workspace-button-using-color #a6adc8;
+
+@define-color primary @blue-pastel;
+@define-color secondary @white;
+@define-color background @dark-blue;
+@define-color foreground @dark-grey;
+@define-color border @grey;
+@define-color surface @dark-grey;
+/* idle / empty button */
+@define-color surface-active @grey;
+/* occupied but not focused */
+@define-color accent @blue-pastel;
+/* active / focused */
+@define-color accent-hover @green-pastel;
+/* hover */
+@define-color urgent @red-pastel;
+/* demands attention */
+@define-color text @blue-pastel;
+/* text on dark surfaces */
+@define-color on-accent @dark-grey;
+/* text on any bright fill */
+
+@define-color pacman @red;
+@define-color spotify @green;

@@ -12,10 +12,9 @@
     "./modules/vpn.jsonc",
     "./modules/spotify.jsonc",
     "./modules/workspaces.jsonc",
-    "./modules/bluetooth.jsonc",
-    "./modules/network.jsonc",
+    "./modules/connections.jsonc",
     "./modules/metrics.jsonc",
-    "./modules/pulseaudio.jsonc",
+    "./modules/audio.jsonc",
     "./modules/battery.jsonc",
     "./modules/clock.jsonc",
     "./modules/system.jsonc"
@@ -31,10 +30,9 @@
     "hyprland/workspaces"
   ],
   "modules-right": [
-    "bluetooth",
-    "network",
+    "group/connections-group",
     "group/metrics",
-    "pulseaudio",
+    "group/audio-group",
     "battery",
     "clock",
     "group/system-group"

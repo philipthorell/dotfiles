@@ -6,11 +6,11 @@
 @import "styling/modules/spotify.css";
 @import "styling/modules/system.css";
 @import "styling/modules/battery.css";
+@import "styling/modules/audio.css";
+@import "styling/modules/connections.css";
+@import "styling/modules/wofi.css";
 
 * {
-  margin: 0;
-  padding: 0;
-  /*min-height: 0px;*/
   border: none;
   border-radius: 0;
   font-family: "JetBrainsMono Nerd Font";
@@ -24,14 +24,12 @@ window.eDP-1 * {
 
 window#waybar {
   background: transparent;
-  color: @white-1;
-  margin: 5px 10px 0px;
 }
 
 tooltip {
-  background: @background-color;
+  background: @background;
   border-radius: 10px;
   border-width: 2px;
   border-style: solid;
-  border-color: @border-color;
+  border-color: @border;
 }

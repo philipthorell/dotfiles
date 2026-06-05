@@ -1,7 +1,8 @@
 {
   "clock": {
     "format": "󰥔 {:%H:%M}",
-    "tooltip-format": "<big>{:%Y %B %d</big>\n %A}\n\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "󰃱 {:%d %B %Y}",
+    "tooltip-format": " <big>{:%A}</big>\n\n<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "year",
       "iso8601": true,
@@ -9,7 +10,8 @@
       "weeks-pos": "left",
       "format": {
         "today": "<span color='orange'><b>{}</b></span>",
-        "weeks": "<span color='#89b4fa'>W{:%W}</span>"
+        "weeks": "<span color='#89b4fa'>W{:%W}</span>",
+        "weekdays": "<span color=''>{}</span>"
       }
     }
   }

@@ -1,10 +1,14 @@
 @import "../colors.css";
 
+#workspaces {
+  border-color: @border;
+}
+
 #workspaces button {
-  color: @workspace-button-white;
+  color: @white;
   margin: 3px 3px;
   padding: 0 4px;
-  background-color: @workspace-button-grey;
+  background-color: @dark-grey;
   border: none;
   border-radius: 50%;
   transition: all 0.3s ease-in;
@@ -12,13 +16,13 @@
 
 /* This shows which workspaces have stuff in them (even if not active) */
 #workspaces button.persistent {
-  color: @workspace-button-grey;
-  background-color: @workspace-button-using-color;
+  color: @dark-grey;
+  background-color: @grey;
 }
 
 #workspaces button.empty {
-  color: @workspace-button-white;
-  background-color: @workspace-button-grey;
+  color: @white;
+  background-color: @dark-grey;
 }
 
 #workspaces button:hover {
@@ -26,18 +30,18 @@
   text-shadow: none;
   background: none;
   transition: none;
-  color: @workspace-button-grey;
+  color: @dark-grey;
   background-color: @green-pastel;
 }
 
 #workspaces button.active,
 #workspaces button.visible {
-  color: @workspace-button-grey;
+  color: @dark-grey;
   background-color: @blue-pastel;
 }
 
 /* URGENT (like a notification or a window demanding attention) */
 #workspaces button.urgent {
-  color: @workspace-button-grey;
+  color: @dark-grey;
   background-color: @red-pastel;
 }

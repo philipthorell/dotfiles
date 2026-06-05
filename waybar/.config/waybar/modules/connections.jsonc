@@ -1,0 +1,39 @@
+{
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": " {num_connections}",
+    "tooltip-format": "bluetooth {status}",
+    "tooltip-format-connected": "󰐻  {num_connections} Connected:\n{device_enumerate}",
+    "tooltip-format-enumerate-connected-battery": "󰂱  {device_alias} (󰠠  {device_battery_percentage}%)",
+    "on-click": "kitty --title=bluetui -e bluetui",
+    "on-click-right": "rfkill toggle bluetooth"
+  },
+  "network": {
+    "format-wifi": "{icon}",
+    "format-ethernet": " ",
+    "format-linked": "󱘖 ",
+    "format-disconnected": "󰤫 ",
+    "format-disabled": "󰤮 ",
+    "format-icons": [
+      "󰤯 ",
+      "󰤟 ",
+      "󰤢 ",
+      "󰤥 ",
+      "󰤨 "
+    ],
+    "tooltip-format-disconnected": "No Connection",
+    "tooltip-format-disabled": "Wi-Fi is OFF",
+    "tooltip-format-wifi": "󱄙  {essid} ({signalStrength}%)\n\n󰐻  Freq: {frequency}GHz\n  {bandwidthDownBytes}   {bandwidthUpBytes}",
+    "tooltip-format-ethernet": "󰈀  {ifname} (Connected)\n  {bandwidthDownBytes}   {bandwidthUpBytes}",
+    "tooltip-format-linked": "󱘖 {ifname}: No IP Address",
+    "on-click": "networkmanager_dmenu"
+  },
+  "group/connections-group": {
+    "orientation": "horizontal",
+    "modules": [
+      "bluetooth",
+      "network"
+    ]
+  }
+}
