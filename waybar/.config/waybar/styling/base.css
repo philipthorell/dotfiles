@@ -11,7 +11,8 @@
 #audio-group,
 #battery,
 #clock,
-#system-group {
+#system-group,
+#privacy {
   background: @background;
   opacity: 0.8;
   padding: 0px 10px;

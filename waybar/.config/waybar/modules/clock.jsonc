@@ -9,9 +9,9 @@
       "mode-mon-col": 3,
       "weeks-pos": "left",
       "format": {
-        "today": "<span color='orange'><b>{}</b></span>",
+        "today": "<span color='#ff2c2c'><b>{}</b></span>",
         "weeks": "<span color='#89b4fa'>W{:%W}</span>",
-        "weekdays": "<span color=''>{}</span>"
+        "weekdays": "<span color='orange'>{}</span>"
       }
     }
   }
