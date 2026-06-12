@@ -18,9 +18,7 @@
   font-size: 15px;
 }
 
-window.eDP-1 * {
-  font-size: 13px;
-}
+window.eDP-1 * {}
 
 window#waybar {
   background: transparent;
