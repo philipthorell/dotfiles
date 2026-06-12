@@ -9,6 +9,7 @@
 @define-color red-pastel #f38ba8;
 @define-color green-pastel #baed91;
 @define-color blue-pastel #89b4fa;
+@define-color orange-pastel #FFC067;
 
 
 @define-color primary @blue-pastel;

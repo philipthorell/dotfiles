@@ -11,6 +11,10 @@
 }
 
 #battery.warning:not(.charging) {
+  color: @orange-pastel;
+}
+
+#battery.critical:not(.charging) {
   color: @red-pastel;
   animation-name: blink;
   animation-duration: 0.5s;
