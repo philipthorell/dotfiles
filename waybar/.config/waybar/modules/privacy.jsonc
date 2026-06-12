@@ -1,0 +1,14 @@
+{
+  "privacy": {
+    "modules": [
+      {
+        "type": "screenshare",
+        "icon-name": "screen-share-symbolic"
+      },
+      {
+        "type": "audio-in",
+        "icon-name": "microphone-sensitivity-high-symbolic"
+      }
+    ]
+  }
+}

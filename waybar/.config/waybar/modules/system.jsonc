@@ -1,17 +1,17 @@
 {
   "custom/lock": {
     "format": "󰍁 ",
-    "tooltip": false,
+    "tooltip-format": "lock",
     "on-click": "hyprlock"
   },
   "custom/reboot": {
     "format": "󰜉 ",
-    "tooltip": false,
+    "tooltip-format": "reboot",
     "on-click": "reboot"
   },
   "custom/power": {
     "format": " ",
-    "tooltip": false,
+    "tooltip-format": "shutdown",
     "on-click": "shutdown now"
   },
   "group/system-group": {
