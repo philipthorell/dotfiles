@@ -1,6 +1,5 @@
 return {
 	"ajbucci/ipynb.nvim",
-	dir = "/home/philip/Projects/ipynb-nvim",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 		"neovim/nvim-lspconfig",

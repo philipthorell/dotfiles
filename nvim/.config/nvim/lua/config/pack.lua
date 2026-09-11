@@ -1,9 +1,14 @@
 vim.pack.add({
 	{ src = "https://github.com/nvim-mini/mini.nvim", version = "stable" },
-	"https://github.com/rafamadriz/friendly-snippets",
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" },
-	"https://github.com/neovim/nvim-lspconfig",
+
+	-- LSP, completion, and formatting
 	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/rafamadriz/friendly-snippets",
+
+	-- Syntax and editing
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" },
+
 	"https://github.com/tpope/vim-fugitive",
 })
 
@@ -125,6 +130,10 @@ end, { desc = "Next hunk" })
 
 vim.keymap.set("n", "<leader>gg", "<cmd>tabnew | Git | only<CR>", { desc = "Fugitive Full Page New Tab" })
 vim.keymap.set("n", "<leader>gd", "<cmd>Gvdiffsplit<CR>", { desc = "Gitt diff split" })
+
+---- mini jump ----
+require("mini.jump").setup()
+require("mini.pairs").setup()
 
 ---- nvim treesitter ----
 require("pack-plugins.treesitter")
