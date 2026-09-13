@@ -21,7 +21,7 @@ end
 hl.bind(mod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mod .. " + N", hl.dsp.exec_cmd(fileManager))
 hl.bind(mod .. " + SPACE", hl.dsp.exec_cmd(menu))
-hl.bind(mod .. " + D", hl.dsp.exec_cmd("discord"))
+hl.bind(mod .. " + D", hl.dsp.exec_cmd("vesktop"))
 hl.bind(mod .. " + O", hl.dsp.exec_cmd("obsidian"))
 hl.bind(mod .. " + P", hl.dsp.exec_cmd("pycharm"))
 hl.bind(mod .. " + M", hl.dsp.exec_cmd("thunderbird"))
