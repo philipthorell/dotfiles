@@ -1,10 +1,6 @@
 {
-    "workspace.library": [
-        "/usr/share/hypr/stubs"
-    ],
-    "workspace.checkThirdParty": false,
-    "runtime.version": "Lua 5.4",
-    "diagnostics.globals": [
-        "hl"
-    ]
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+  "runtime.version": "Lua 5.5",
+  "workspace.library": ["/usr/share/hypr/stubs"],
+  "workspace.checkThirdParty": false
 }
