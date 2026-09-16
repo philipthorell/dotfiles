@@ -7,9 +7,18 @@ return {
 	opts = {},
 	init = function()
 		vim.api.nvim_create_autocmd("FileType", {
-			callback = function()
+			callback = function(args)
 				pcall(vim.treesitter.start)
-				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				local ft = vim.bo[args.buf].filetype
+				if ft == "qml" or ft == "qmljs" then
+					vim.bo[args.buf].indentexpr = ""
+					vim.bo[args.buf].cindent = true
+					vim.bo[args.buf].shiftwidth = 4
+					vim.bo[args.buf].tabstop = 4
+					vim.bo[args.buf].expandtab = true
+				else
+					vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				end
 			end,
 		})
 
