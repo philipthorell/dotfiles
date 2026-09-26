@@ -10,10 +10,10 @@ local modShift = "SUPER + SHIFT"
 if utils.hostname == "sun" then
     ;
 elseif utils.hostname == "mars" then
-    local toggle_touchpad = require("modules.laptop.keybinds")
+    local keybinds = require("modules.laptop.keybinds")
 
     hl.bind(modShift .. " + F23", function()
-        toggle_touchpad()
+        keybinds.toggle_touchpad()
     end)
 end
 
