@@ -1,11 +1,27 @@
 vim.pack.add({
-	"https://github.com/mason-org/mason.nvim",
-	"https://github.com/neovim/nvim-lspconfig",
-	"https://github.com/mason-org/mason-lspconfig.nvim",
+	"https://github.com/williamboman/mason.nvim",
 	"https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/artemave/workspace-diagnostics.nvim",
+}, { load = true })
+
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		if ev.data.spec.name == "mason.nvim" and (ev.data.kind == "install" or ev.data.kind == "update") then
+			vim.cmd("MasonUpdate")
+		end
+	end,
 })
 
-require("mason").setup()
+require("mason").setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
+})
 
 -- default keymaps
 -- vim.keymaps.set("n", "gri", vim.lsp.buf.implementation, opts)                -- Go to implementation
@@ -21,19 +37,21 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "Format local buffer" })
 vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 
+-- Mason registry package names (not lspconfig server names -- there's no
+-- mason-lspconfig.nvim here to translate between the two)
 require("mason-tool-installer").setup({
 	ensure_installed = {
-		"lua_ls",
+		"lua-language-server",
 		"pyright",
-		"ts_ls",
-		"html",
-		"cssls",
-		"tailwindls",
-		"bashls",
-		"dockerls",
-		"docker_compose_language_service",
-		"jsonls",
-		"yamlls",
+		"typescript-language-server",
+		"html-lsp",
+		"css-lsp",
+		"tailwindcss-language-server",
+		"bash-language-server",
+		"dockerfile-language-server",
+		"docker-compose-language-service",
+		"json-lsp",
+		"yaml-language-server",
 	},
 })
 
@@ -42,17 +60,9 @@ vim.diagnostic.config({
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, require("mini.completion").get_lsp_capabilities())
+capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
 
 vim.lsp.config("*", { capabilities = capabilities })
-
-vim.lsp.config("lua_ls", {
-	settings = {
-		Lua = {
-			diagnostics = { globals = { "vim" } },
-		},
-	},
-})
 
 vim.lsp.enable({
 	"lua_ls",
@@ -60,7 +70,7 @@ vim.lsp.enable({
 	"ts_ls",
 	"html",
 	"cssls",
-	"tailwindls",
+	"tailwindcss",
 	"bashls",
 	"dockerls",
 	"docker_compose_language_service",

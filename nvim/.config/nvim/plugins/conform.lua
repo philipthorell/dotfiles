@@ -1,0 +1,36 @@
+vim.pack.add({
+	"https://github.com/stevearc/conform.nvim",
+}, { load = true })
+
+require("conform").setup({
+	formatters_by_ft = {
+		-- Run ruff_fix then ruff_format sequentially
+		python = { "ruff_fix", "ruff_format" },
+
+		-- Example for other languages
+		lua = { "stylua" },
+
+		-- JS/TS: Runs eslint_d followed by prettier
+		javascript = { "prettier" },
+		typescript = { "prettier" },
+		javascriptreact = { "prettier" },
+		typescriptreact = { "prettier" },
+
+		-- JSON: Format with prettier
+		json = { "prettier" },
+		jsonc = { "prettier" },
+	},
+
+	-- Override formatter arguments
+	formatters = {
+		prettier = {
+			prepend_args = { "--print-width", "120" },
+		},
+	},
+
+	-- Optional: Setup format on save
+	format_on_save = {
+		timeout_ms = 500,
+		lsp_format = "fallback", -- Use LSP if no formatter is found
+	},
+})

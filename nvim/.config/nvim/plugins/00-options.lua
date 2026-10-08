@@ -22,8 +22,8 @@ vim.opt.backup = false
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.opt.undofile = true
 
-vim.opt.completeopt = "menu,menuone,noselect,fuzzy,nosort" -- is for mini completions
-vim.opt.shortmess:append("c") -- also for mini completions
+vim.opt.completeopt = "menu,menuone,noselect,fuzzy,nosort" -- for blink.cmp
+vim.opt.shortmess:append("c") -- also for blink.cmp
 --vim.opt.guicursor = ""  -- Let's the terminal control the look of the cursor
 vim.opt.scrolloff = 8
 

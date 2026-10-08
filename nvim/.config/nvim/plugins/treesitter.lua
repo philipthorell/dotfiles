@@ -1,3 +1,7 @@
+vim.pack.add({
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
+}, { load = true })
+
 local parsers = {
 	"lua",
 	"vim",
@@ -16,6 +20,7 @@ local parsers = {
 	"html",
 	"css",
 	"bash",
+	"dockerfile",
 }
 
 -- Install missing parsers on startup (non-blocking)
@@ -23,7 +28,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	once = true,
 	callback = function()
 		for _, lang in ipairs(parsers) do
-			local ok = pcall(vim.treesitter.language.require_language, lang, nil, true)
+			local ok = vim.treesitter.language.add(lang)
 			if not ok then
 				pcall(vim.treesitter.language.install, lang)
 			end
@@ -31,9 +36,19 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	end,
 })
 
--- Enable highlighting per buffer
+-- Enable highlighting and indentation per buffer
 vim.api.nvim_create_autocmd("FileType", {
-	callback = function()
-		pcall(vim.treesitter.start) -- silently falls back to regex if no parser
+	callback = function(args)
+		pcall(vim.treesitter.start)
+		local ft = vim.bo[args.buf].filetype
+		if ft == "qml" or ft == "qmljs" then
+			vim.bo[args.buf].indentexpr = ""
+			vim.bo[args.buf].cindent = true
+			vim.bo[args.buf].shiftwidth = 4
+			vim.bo[args.buf].tabstop = 4
+			vim.bo[args.buf].expandtab = true
+		else
+			vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		end
 	end,
 })
